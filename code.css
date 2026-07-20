@@ -1,0 +1,129 @@
+pre.src, pre.example {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+    padding: 15px !important;
+    border-radius: 4px;
+    font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace !important;
+    font-variant-ligatures: none !important; /* EMPECHE LE != DE DEVENIR ≠ */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    overflow-x: auto;
+    line-height: 1.5;
+}
+
+.org-keyword { color: #c678dd  !important; font-weight: bold; }
+.org-string  { color: #ce9178 !important; }
+.org-comment { color: #6a9955 !important; font-style: italic; }
+.org-function-name, .org-builtin { color: #dcdcaa !important; }
+.org-type { color: #4ec9b0 !important; }
+.org-variable-name { color: #9cdcfe !important; }
+.org-constant { color: #b5cea8 !important; } /* Pour les chiffres */
+.org-doc { color: #ce9178 !important; }
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007acc;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.org-comment-delimiter {
+    color: #6a9955  !important;
+}
+
+.src .src-python {
+    background-color: #1e1e1e !important;
+    color: #d4d4d4 !important;
+    padding: 45px 20px 20px !important;
+    border-radius: 10px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    position: relative;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+
+.src .src-python::before {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #ff5f56;
+    letter-spacing: 3px;
+    font-size: 14px;
+    z-index: 5;
+}
+
+/* Style global du conteneur de code */
+.sourceCode {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+/* Style des lignes de code */
+.sourceCode pre.sourceCode {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* Style des numéros de ligne (les ancres <a>) */
+.sourceCode a[aria-hidden="true"] {
+    display: inline-block;
+    width: 30px;
+    color: #aaaaaa;
+    text-align: right;
+    padding-right: 10px;
+    border-right: 1px solid #eeeeee;
+    margin-right: 10px;
+    text-decoration: none;
+    user-select: none; /* Empêche de sélectionner les numéros */
+}
+
+/* --- STYLE DU BOUTON COPY --- */
+
+/* Positionnement du bouton dans le conteneur */
+.org-src-container {
+    position: relative; /* Indispensable pour que le bouton se place en haut à droite */
+}
+
+.copy-code-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 8px;
+    background-color: #343b41; /* Couleur sombre type VS Code */
+    color: #cccccc;
+    border: 1px solid #454545;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    opacity: 0; /* Caché par défaut */
+    transition: opacity 0.2s ease, background-color 0.2s;
+    z-index: 10;
+}
+
+/* Le bouton apparaît quand on passe la souris sur le bloc de code */
+.org-src-container:hover .copy-code-button {
+    opacity: 1;
+}
+
+/* Changement de couleur au survol du bouton */
+.copy-code-button:hover {
+    background-color: #454d55;
+    color: #ffffff;
+    border-color: #007acc; /* Bordure bleue VS Code au survol */
+}
+
+/* Effet quand on clique dessus */
+.copy-code-button:active {
+    background-color: #0e639c;
+}
+
+a:not(.nav a):not([class]):not([id]) {color: blue !important;}

@@ -1,0 +1,17 @@
+/* Ciblage spécifique des images dans ton tableau de logos */
+.table-images img {
+    height: 100px !important; /* On garde la hauteur cohérente */
+    transition: transform 0.3s ease !important; /* Animation fluide */
+    cursor: pointer;
+}
+
+/* L'effet de mouvement au survol */
+.table-images img:hover {
+    transform: scale(1.1) translateY(-5px) !important; /* Zoom + léger soulèvement */
+}
+
+/* Optionnel : supprimer le fond blanc ou les bordures si ReadTheOrg en ajoute */
+.table-images td {
+    border: none !important;
+    background: none !important;
+}
