@@ -1,0 +1,97 @@
+# -*- mode: org; -*-
+
+#+OPTIONS: html-style:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/htmlize.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/readtheorg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/code-copy.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/back-button.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/Rapport_file_css_uca_isima.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/code.css">
+
+#+HTML_HEAD: <script src="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/jquery.min.js"></script>
+#+HTML_HEAD: <script src="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/bootstrap.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/jquery.stickytableheaders.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/readtheorg.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/code-copy.js"></script>
+#+HTML_HEAD: <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/vozinex/orgmode-vscode@1.0.0/tex-mml-chtml.js"></script>
+
+#+HTML_HEAD: <script>
+#+HTML_HEAD:   // Bloque les tentatives d'initialisation prématurées de MathJax par les scripts locaux
+#+HTML_HEAD:   window.MathJax = { startup: { typeset: false } };
+#+HTML_HEAD: </script>
+
+#+HTML_HEAD: <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.55.1/min/vs/loader.js"></script>
+#+HTML_HEAD: <script>
+#+HTML_HEAD: 
+#+HTML_HEAD: require.config({ 
+#+HTML_HEAD:     paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.55.1/min/vs' } 
+#+HTML_HEAD: });
+
+#+HTML_HEAD: require(['vs/editor/editor.main'], function() {
+#+HTML_HEAD:     var codeBlocks = document.querySelectorAll('pre[class^="src-"], pre[class*=" src-"]');
+    
+#+HTML_HEAD:     codeBlocks.forEach(function(block) {
+#+HTML_HEAD:         var lang = 'text';
+#+HTML_HEAD:         block.classList.forEach(function(cls) {
+#+HTML_HEAD:             if (cls.startsWith('src-')) {
+#+HTML_HEAD:                 lang = cls.replace('src-', '').toLowerCase();
+#+HTML_HEAD:             }
+#+HTML_HEAD:         });
+        
+#+HTML_HEAD:         if (lang === 'emacs-lisp' || lang === 'lisp') lang = 'clojure';
+#+HTML_HEAD:         if (lang === 'js') lang = 'javascript';
+        
+#+HTML_HEAD:         var container = document.createElement('div');
+        
+#+HTML_HEAD:         var lineCount = block.textContent.split('\n').length;
+#+HTML_HEAD:         container.style.height = (lineCount * 19 + 35) + 'px';
+#+HTML_HEAD:         container.style.overflow = 'hidden';
+#+HTML_HEAD:         container.style.lineHeight = '20px';
+#+HTML_HEAD:         container.style.touchAction = 'pan-x'; 
+        
+#+HTML_HEAD:         block.parentNode.insertBefore(container, block.nextSibling);
+        
+#+HTML_HEAD:         var editor = monaco.editor.create(container, {
+#+HTML_HEAD:             value: block.textContent,
+#+HTML_HEAD:             language: lang,
+#+HTML_HEAD:             theme: 'vs-dark',
+#+HTML_HEAD:             readOnly: true,
+#+HTML_HEAD:             minimap: { enabled: false },
+#+HTML_HEAD:             scrollbar: { 
+#+HTML_HEAD:                 vertical: 'hidden',
+#+HTML_HEAD:                 horizontal: 'visible',
+#+HTML_HEAD:                 handleMouseWheel: false,
+#+HTML_HEAD:                 alwaysConsumeMouseWheel: false 
+#+HTML_HEAD:             },
+#+HTML_HEAD:             overviewRulerLanes: 0
+#+HTML_HEAD:         });
+#+HTML_HEAD:         
+#+HTML_HEAD:         container.addEventListener('wheel', function(e) {
+#+HTML_HEAD:             var isVerticalScroll = Math.abs(e.deltaY) > Math.abs(e.deltaX);
+#+HTML_HEAD:             if (isVerticalScroll) return; 
+#+HTML_HEAD:             else {
+#+HTML_HEAD:                 e.preventDefault();
+#+HTML_HEAD:                 var currentScrollLeft = editor.getScrollLeft();
+#+HTML_HEAD:                 editor.setScrollLeft(currentScrollLeft + e.deltaX);
+#+HTML_HEAD:             }
+#+HTML_HEAD:         }, { passive: false });
+#+HTML_HEAD: 
+#+HTML_HEAD:         editor.onDidScrollChange(function(e) {
+#+HTML_HEAD:             if (e.scrollTop !== 0) editor.setScrollTop(0);
+#+HTML_HEAD:         });
+        
+#+HTML_HEAD:         block.style.display = 'none';
+#+HTML_HEAD:     });
+#+HTML_HEAD: });
+#+HTML_HEAD: </script>
+
+#+HTML_HEAD: <script>
+#+HTML_HEAD:   window.MathJax = {
+#+HTML_HEAD:     loader: { load: ['[tex]/ams'] },
+#+HTML_HEAD:     tex: { packages: { '[+]': ['ams'] } },
+#+HTML_HEAD:     chtml: {
+#+HTML_HEAD:       fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+#+HTML_HEAD:     }
+#+HTML_HEAD:   };
+#+HTML_HEAD: </script>
+#+HTML_HEAD: <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
